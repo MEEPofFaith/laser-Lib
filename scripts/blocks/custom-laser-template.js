@@ -22,6 +22,7 @@ var length = [220];
 
 //Stuff you probably shouldn't edit.
 var tscales = [1, 0.7, 0.5, 0.2];
+//I think this is thickness
 var strokes = [2, 1.5, 1, 0.3];
 var lenscales = [1, 1.12, 1.15, 1.17];
 var tmpColor = new Color();
@@ -74,8 +75,7 @@ laserLib.shootType.hitSize = 4;
 laserLib.shootType.lifetime = 16;
 laserLib.shootType.drawSize = 420;
 laserLib.shootType.pierce = true;
-//Don't actually know if the speed is important. I have it because I think the turrets will try to lead their target, which doesn't quite work when you're literally shooting instant lasers.
-laserLib.shootType.speed = 69420;
+laserLib.shootType.speed = 0.001;
 
 //make the beam inflict a status effect. Remove if you don't want a status effect applied.
 exampleEffect = new StatusEffect("name");
