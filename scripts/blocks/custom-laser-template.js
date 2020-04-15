@@ -25,7 +25,9 @@ var length = [220];
 var tscales = [1, 0.7, 0.5, 0.2];
 //Overall width of each color
 var strokes = [2, 1.5, 1, 0.3];
-//Determines the lengths of the tapered ends
+//Determines how far back each section in the start should be pulled
+var pullscales = [1, 1.12, 1.15, 1.17];
+//Determines how far each section of the end should extend past the main thickest section
 var lenscales = [1, 1.12, 1.15, 1.17];
 
 var tmpColor = new Color();
@@ -39,8 +41,10 @@ laserLib.shootType = extend(BasicBulletType, {
         if(b.timer.get(1, 5)){
             for(var v = 0; v < lasers; v++){
                 vec.trns(b.rot() - 90, spacing[v], position[v]);
+                Tmp.v1.trns(b.rot() + angleB + 180.0, (pullscales[4] - 1.0) * 55.0);
                 var angleB = spread[v];
-                Damage.collideLine(b, b.getTeam(), this.hitEffect, b.x + vec.x, b.y + vec.y, b.rot() + angleB, length[v] + length[v]/8.75, true);
+                var baseLen = length[v] * b.fout();
+                Damage.collideLine(b, b.getTeam(), this.hitEffect, b.x + Tmp.v1.x + vec.x, b.y + Tmp.v1.y + vec.y, b.rot() + angleB, baseLen * b.fout() * lenscales[4], true);
             }
         };
     },
@@ -59,9 +63,9 @@ laserLib.shootType = extend(BasicBulletType, {
             for(var i = 0; i < 4; i++){
                 for(var v = 0; v < lasers; v++){
                     vec.trns(b.rot() - 90, spacing[v], position[v]);
+                    Tmp.v1.trns(b.rot() + angleB + 180.0, (pullscales[i] - 1.0) * 55.0);
                     var angleB = spread[v];
                     var baseLen = length[v] * b.fout();
-                    Tmp.v1.trns(b.rot() + angleB + 180.0, (lenscales[i] - 1.0) * 55.0);
                     Lines.stroke((4 + Mathf.absin(Time.time(), 0.8, 1.5)) * b.fout() * strokes[s] * tscales[i]);
                     Lines.lineAngle(b.x + Tmp.v1.x + vec.x, b.y + Tmp.v1.y + vec.y, b.rot() + angleB, baseLen * b.fout() * lenscales[i], CapStyle.none);
                 }
