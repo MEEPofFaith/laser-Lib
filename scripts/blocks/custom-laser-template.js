@@ -20,12 +20,12 @@ const position = [0];
 //Length of beam. Uses same 8 per tile rule.
 var length = [220];
 
-//Stuff you probably shouldn't edit.
+//Stuff you probably shouldn't edit unless you know what you're doing.
 //Width of each section of the beam from thickest to thinnest
 var tscales = [1, 0.7, 0.5, 0.2];
 //Overall width of each color
 var strokes = [2, 1.5, 1, 0.3];
-//Something to do with hiw far the ends come out. Not entirely sure.
+//Determines the lengths of the tapered ends
 var lenscales = [1, 1.12, 1.15, 1.17];
 
 var tmpColor = new Color();
