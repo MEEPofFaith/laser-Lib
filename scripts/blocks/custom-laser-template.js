@@ -21,11 +21,11 @@ const position = [0];
 var length = [220];
 
 //Stuff you probably shouldn't edit.
-//I think this is ???
+//Width of each section of the beam from thickest to thinnest
 var tscales = [1, 0.7, 0.5, 0.2];
-//I think this is thickness
+//Overall width of each color
 var strokes = [2, 1.5, 1, 0.3];
-//I think this is ???
+//Something to do with hiw far the ends come out. Not entirely sure.
 var lenscales = [1, 1.12, 1.15, 1.17];
 
 var tmpColor = new Color();
