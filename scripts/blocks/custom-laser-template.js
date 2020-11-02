@@ -41,10 +41,10 @@ laserLib.shootType = extend(BasicBulletType, {
         if(b.timer.get(1, 5)){
             for(var v = 0; v < lasers; v++){
                 vec.trns(b.rot() - 90, spacing[v], position[v]);
-                Tmp.v1.trns(b.rot() + angleB + 180.0, (pullscales[4] - 1.0) * 55.0);
+                Tmp.v1.trns(b.rot() + angleB + 180.0, (pullscales[3] - 1.0) * 55.0);
                 var angleB = spread[v];
                 var baseLen = length[v] * b.fout();
-                Damage.collideLine(b, b.getTeam(), this.hitEffect, b.x + Tmp.v1.x + vec.x, b.y + Tmp.v1.y + vec.y, b.rot() + angleB, baseLen * b.fout() * lenscales[4], true);
+                Damage.collideLine(b, b.getTeam(), this.hitEffect, b.x + Tmp.v1.x + vec.x, b.y + Tmp.v1.y + vec.y, b.rot() + angleB, baseLen * b.fout() * lenscales[3], true);
             }
         };
     },
